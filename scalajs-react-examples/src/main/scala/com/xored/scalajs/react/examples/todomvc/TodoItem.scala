@@ -4,7 +4,7 @@ import com.xored.scalajs.react._
 import com.xored.scalajs.react.util._
 import org.scalajs.dom._
 
-import org.scalajs.dom.extensions.KeyCode
+import org.scalajs.dom.ext.KeyCode
 
 object TodoItem extends TypedReactSpec with TypedEventListeners {
 
@@ -14,7 +14,7 @@ object TodoItem extends TypedReactSpec with TypedEventListeners {
     onDestroy: () => Unit,
     onCancel: () => Unit,
     onToggle: () => Unit,
-    onEdit: ( () => Unit ) => Unit,
+    onEdit: (() => Unit) => Unit,
     onSave: String => Unit)
 
   case class State(editText: String)
@@ -33,7 +33,7 @@ object TodoItem extends TypedReactSpec with TypedEventListeners {
 
     val handleEdit = element.onEvent(e => {
       props.onEdit(() => {
-        val node = self.refs(editField).getDOMNode().asInstanceOf[HTMLInputElement]
+        val node = self.refs(editField).getDOMNode().asInstanceOf[html.Input]
         node.focus()
         node.setSelectionRange(node.value.length, node.value.length)
       })
@@ -72,22 +72,14 @@ object TodoItem extends TypedReactSpec with TypedEventListeners {
       "complete" -> self.props.todo.completed,
       "editing" -> self.props.editing)
 
-    <li className={className}>
+    <li className={ className }>
       <div className="view">
-        <input className="toggle"
-               type="checkbox"
-               checked={self.props.todo.completed}
-               onChange={self.props.onToggle}>
+        <input className="toggle" type="checkbox" checked={ self.props.todo.completed } onChange={ self.props.onToggle }>
         </input>
-        <label onDoubleClick={self.handleEdit}>{self.props.todo.title}</label>
-        <button className="destroy" onClick={self.props.onDestroy}></button>
+        <label onDoubleClick={ self.handleEdit }>{ self.props.todo.title }</label>
+        <button className="destroy" onClick={ self.props.onDestroy }></button>
       </div>
-      <input className="edit"
-             value={self.state.editText}
-             ref={editField}
-             onBlur={self.handleSubmit}
-             onChange={self.handleChange}
-             onKeyDown={self.handleKeyDown}>
+      <input className="edit" value={ self.state.editText } ref={ editField } onBlur={ self.handleSubmit } onChange={ self.handleChange } onKeyDown={ self.handleKeyDown }>
       </input>
     </li>
   }

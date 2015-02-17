@@ -30,7 +30,7 @@ object Children {
         s"button-${self.props.size}" -> true,
         s"button-primary" -> self.props.primary)
 
-      <button className={className}>{self.props.label}</button>
+      <button className={ className }>{ self.props.label }</button>
     }
   }
 
@@ -56,23 +56,23 @@ object Children {
     }
   }
 
-  def main(parent: HTMLElement) = {
+  def main(parent: html.Element) = {
     @scalax val buttons = <div className="toolbars">
-      {
-        ButtonToolbar(
-          <label>Small</label>,
-          Button("small", "Small Button"),
-          Button("small", "Small Button", primary = true)
-        )
-      }
-      {
-        ButtonToolbar(
-          <label>Large</label>,
-          Button("large", "Large Button"),
-          Button("large", "Large Button", primary = true)
-        )
-      }
-    </div>
+                            {
+                              ButtonToolbar(
+                                <label>Small</label>,
+                                Button("small", "Small Button"),
+                                Button("small", "Small Button", primary = true)
+                              )
+                            }
+                            {
+                              ButtonToolbar(
+                                <label>Large</label>,
+                                Button("large", "Large Button"),
+                                Button("large", "Large Button", primary = true)
+                              )
+                            }
+                          </div>
 
     React.renderComponent(buttons, document.body)
   }

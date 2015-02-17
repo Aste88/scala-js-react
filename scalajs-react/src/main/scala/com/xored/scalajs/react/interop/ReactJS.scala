@@ -18,7 +18,7 @@ package com.xored.scalajs.react.interop
 
 import scala.scalajs.js
 import js.annotation.JSName
-import org.scalajs.dom
+import org.scalajs.dom.html
 import com.xored.scalajs.react.ReactDOM
 
 /**
@@ -28,7 +28,7 @@ import com.xored.scalajs.react.ReactDOM
 object ReactJS extends js.Object {
   def createClass[State, Props, T](spec: js.Dictionary[T]): ReactComponentClass[State, Props] = js.native
 
-  def renderComponent[C <: ReactDOM](component: C, container: dom.HTMLElement): C = js.native
+  def renderComponent[C <: ReactDOM](component: C, container: html.Element): C = js.native
 
   def renderComponentToString(dom: ReactDOM): String = js.native
 
