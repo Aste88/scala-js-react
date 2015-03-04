@@ -28,11 +28,13 @@ import com.xored.scalajs.react.ReactDOM
 object ReactJS extends js.Object {
   def createClass[State, Props, T](spec: js.Dictionary[T]): ReactComponentClass[State, Props] = js.native
 
-  def renderComponent[C <: ReactDOM](component: C, container: html.Element): C = js.native
+  def render[C <: ReactDOM](component: C, container: html.Element): C = js.native
 
-  def renderComponentToString(dom: ReactDOM): String = js.native
+  def renderToString(dom: ReactDOM): String = js.native
 
-  def renderComponentToStaticMarkup(dom: ReactDOM): String = js.native
+  def renderToStaticMarkup(dom: ReactDOM): String = js.native
+
+  def createFactory[State, Props](spec: ReactComponentClass[State, Props]): ReactComponentClass[State, Props] = js.native
 
   def DOM: js.Dynamic = js.native
 }

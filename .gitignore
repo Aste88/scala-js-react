@@ -10,9 +10,10 @@ target
 
 # IDE
 
-/.classpath
-/.project
-/.settings
+.classpath
+.project
+.settings
+.cache
 
 /*.iml
 /.idea/workspace.xml

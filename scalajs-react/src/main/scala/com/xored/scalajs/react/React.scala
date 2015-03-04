@@ -25,21 +25,21 @@ object React {
   val DOM = ReactDOM
 
   def renderComponent[C <: ReactDOM](dom: C, container: html.Element): C = {
-    ReactJS.renderComponent(dom, container)
+    ReactJS.render(dom, container)
   }
 
   def renderComponentToString(dom: ReactDOM): String = {
-    ReactJS.renderComponentToString(dom)
+    ReactJS.renderToString(dom)
   }
 
   def renderComponentToStaticMarkup(dom: ReactDOM): String = {
-    ReactJS.renderComponentToStaticMarkup(dom)
+    ReactJS.renderToStaticMarkup(dom)
   }
 
   def createClass(spec: ReactSpec): ReactComponentClass[spec.type#This#State, spec.type#This#Props] = {
     val exports = spec.exports()
     val reactSpec = js.Dictionary(exports.map(x => (x.name, x.value)): _*)
 
-    ReactJS.createClass(reactSpec)
+    ReactJS.createFactory(ReactJS.createClass(reactSpec))
   }
 }
