@@ -24,11 +24,10 @@ import com.xored.scalajs.react.ReactDOM
 /**
  * Interop with react.js
  */
+@js.native
 @JSName("React")
 object ReactJS extends js.Object {
   def createClass[State, Props, T](spec: js.Dictionary[T]): ReactComponentClass[State, Props] = js.native
-
-  def render[C <: ReactDOM](component: C, container: html.Element): C = js.native
 
   def renderToString(dom: ReactDOM): String = js.native
 
@@ -37,4 +36,11 @@ object ReactJS extends js.Object {
   def createFactory[State, Props](spec: ReactComponentClass[State, Props]): ReactComponentClass[State, Props] = js.native
 
   def DOM: js.Dynamic = js.native
+}
+
+@js.native
+@JSName("ReactDOM")
+object ReactJSDOM extends js.Object {
+
+  def render[C <: ReactDOM](component: C, container: html.Element): C = js.native
 }

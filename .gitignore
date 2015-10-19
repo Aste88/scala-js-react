@@ -15,20 +15,5 @@ target
 .settings
 .cache
 
-/*.iml
-/.idea/workspace.xml
-/.idea/sbt.xml
-/.idea/libraries/
-/.idea/modules.xml
-/.idea/vcs.xml
-/.idea/modules/
-/.idea/dictionaries/
-/.idea/copyright/profiles_settings.xml
-/.idea/.name
-/.idea/compiler.xml
-/.idea/copyright/profiles_settings.xml
-/.idea/encodings.xml
-/.idea/highlighting.xml
-/.idea/misc.xml
-/.idea/scopes/scope_settings.xml
-/.idea/uiDesigner.xml
+*.iml
+.idea/

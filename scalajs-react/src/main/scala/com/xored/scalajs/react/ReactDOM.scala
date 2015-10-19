@@ -20,8 +20,10 @@ import scala.scalajs.js
 import org.scalajs.dom._
 import com.xored.scalajs.react.interop.ReactJS
 
+@js.native
 trait ReactDOM extends html.Element
 
+@js.native
 trait ReactDOMRef extends js.Object {
   def getDOMNode(): ReactDOM = js.native // we need brackets for interop!
 }

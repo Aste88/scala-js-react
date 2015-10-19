@@ -33,7 +33,9 @@ object ReactRenderSuite extends TestSuite {
       }
 
       "render <div><Hello World /></div>" - {
-        @scalax val reactDom = <div>{HelloWorld(HelloWorld.Props())}</div>
+        @scalax val reactDom = <div>
+          {HelloWorld(HelloWorld.Props())}
+        </div>
         val dom = renderToString(reactDom)
 
         assert(dom == "<div><h1>Hello World!</h1></div>")
@@ -42,8 +44,8 @@ object ReactRenderSuite extends TestSuite {
       "render <Panel><HelloWorld /><button>Submit</button></Panel>" - {
         @scalax val reactDom = Panel(Panel.Props(
           HelloWorld(HelloWorld.Props()),
-            <button>Submit</button>
-          ))
+          <button>Submit</button>
+        ))
         val dom = renderToString(reactDom)
 
         assert(dom == "<div class=\"panel\"><h1>Hello World!</h1><button>Submit</button></div>")

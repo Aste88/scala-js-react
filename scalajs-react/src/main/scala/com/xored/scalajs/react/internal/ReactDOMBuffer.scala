@@ -16,6 +16,8 @@
 
 package com.xored.scalajs.react.internal
 
+import java.util.concurrent.atomic.AtomicInteger
+
 import scala.scalajs.js
 import com.xored.scalajs.react.ReactDOM
 
@@ -24,18 +26,16 @@ class ReactDOMBuffer extends scala.collection.mutable.ArrayBuffer[ReactDOM] {
   private val EMPTY_STRING = js.Any.fromString("")
 
   def &+(o: Any): ReactDOMBuffer = {
+
     o match {
       case null | _: Unit | EMPTY_STRING => // ignore
-
       // just js.Object
-      case n if n.getClass == null => super.+=(n.asInstanceOf[ReactDOM])
-
+      case n if o.getClass.equals(null) => super.+=(n.asInstanceOf[ReactDOM])
       // in ScalaJS Long is iterable
       case x: scala.Long => super.+=(x.toString.asInstanceOf[ReactDOM])
-
       case it: Iterator[_] => it foreach &+
       case ns: Iterable[_] => this &+ ns.iterator
-      case ns: Array[_] => this &+ ns.iterator
+      case na: Array[_] => this &+ na.iterator
       case n => super.+=(n.asInstanceOf[ReactDOM])
     }
 

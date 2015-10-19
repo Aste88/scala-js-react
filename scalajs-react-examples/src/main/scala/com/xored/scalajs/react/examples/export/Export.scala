@@ -6,7 +6,9 @@ import com.xored.scalajs.react.util.TypedEventListeners
 import scala.scalajs.js
 
 object ContentEditable extends TypedReactSpec {
+
   case class Props()
+
   case class State()
 
   def getInitialState(self: This) = State()
@@ -24,6 +26,7 @@ object ContentEditable extends TypedReactSpec {
   }
 }
 
+@js.native
 trait Focusable extends js.Object {
   def focus(): Unit = js.native
 }
@@ -36,7 +39,9 @@ object Focusable {
 }
 
 object Export extends TypedReactSpec with TypedEventListeners {
+
   case class Props()
+
   case class State()
 
   def getInitialState(self: This) = State()
@@ -54,16 +59,10 @@ object Export extends TypedReactSpec with TypedEventListeners {
 
     <div>
       <div style={margin}>
-        {
-          ContentEditable(ContentEditable.Props(), ref = "input-1")
-        }
-        <button onClick={self.focus("input-1")}>Focus</button>
+        {ContentEditable(ContentEditable.Props(), ref = "input-1")}<button onClick={self.focus("input-1")}>Focus</button>
       </div>
       <div style={margin}>
-        {
-          ContentEditable(ContentEditable.Props(), ref = "input-2")
-        }
-        <button onClick={self.focus("input-2")}>Focus</button>
+        {ContentEditable(ContentEditable.Props(), ref = "input-2")}<button onClick={self.focus("input-2")}>Focus</button>
       </div>
     </div>
   }
